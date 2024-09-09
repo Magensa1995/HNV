@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Form</title>
+</head>
+<body>
+    <h2>{% if form.instance.pk %}Edit Product{% else %}New Product{% endif %}</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        {{ form.non_field_errors }}  <!-- Form-wide errors -->
+        
+        <div>
+            {{ form.name.label }}:
+            {{ form.name }}
+            {{ form.name.errors }}  <!-- Field-specific errors -->
+        </div>
+    
+        <div>
+            {{ form.description.label }}:
+            {{ form.description }}
+            {{ form.description.errors }}
+        </div>
+    
+        <div>
+            {{ form.price.label }}:
+            {{ form.price }}
+            {{ form.price.errors }}
+        </div>
+    
+        <div>
+            {{ form.stock.label }}:
+            {{ form.stock }}
+            {{ form.stock.errors }}
+        </div>
+    
+        <div>
+            {{ form.available.label }}:
+            {{ form.available }}
+            {{ form.available.errors }}
+        </div>
+    
+        <div>
+            {{ form.image.label }}:
+            {{ form.image }}
+            {{ form.image.errors }}
+        </div>
+    
+        <button type="submit">Save</button>
+    </form>
+    
+    <a href="{% url 'product_list' %}">Back to Product List</a>
+</body>
+</html>
